@@ -57,7 +57,7 @@ python標準のunittestモジュール
 
 ## 実行方法
 ### 通常実行
-pythonをインストールへんかんすしてpython.exeのパスを通した環境で、
+pythonをインストールしてpython.exeのパスを通した環境で、
 
 python excelconv.py [-i | 変換する文字列]
 
