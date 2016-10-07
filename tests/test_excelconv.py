@@ -29,7 +29,8 @@ class TestExcelConv(unittest.TestCase):
         # 異常な文字
         self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('AA[/[-0'))
 
-        # 範囲外（ValueErrorになること)
+        # 範囲外
+        self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('FXSHRXX'))
         self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('ABCSEFGHIJKLMN'))
 
 
@@ -47,13 +48,14 @@ class TestExcelConv(unittest.TestCase):
         self.assertEqual(exc.convert_excel_axis('2731'), 'DAA')
 
         # 異常値(例外の発生を確認)
-        # 0,負数
+        # 0
         self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('0'))
 
         # 負数
         self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('-1'))
 
-        # 範囲外（ValueErrorになること)
+        # 範囲外
+        self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('2147483648'))
         self.assertRaises(exc.ExcelConvError, lambda: exc.convert_excel_axis('12354634231'))
 
 
